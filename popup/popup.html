@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+  <!-- Use local QuaggaJS file -->
+  <script src="../libs/quagga.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📊 Barcode Detective</h1>
+      <p>Crop any region to detect barcodes</p>
+    </div>
+    
+    <div class="controls">
+      <button id="startCrop" class="btn-primary">
+        🎯 Start Screen Crop
+      </button>
+      
+      <div class="divider">OR</div>
+      
+      <input type="file" id="fileInput" accept="image/*" style="display: none;">
+      <button id="uploadBtn" class="btn-secondary">
+        📁 Upload Image
+      </button>
+    </div>
+
+    <!-- Image preview for uploaded files -->
+    <div id="imagePreviewContainer" class="image-preview-container hidden">
+      <img id="imagePreview" class="image-preview" alt="Uploaded image">
+    </div>
+    
+    <!-- Status/Loading indicator -->
+    <div id="status" class="status hidden">
+      <div class="spinner"></div>
+      <span id="statusText">Processing...</span>
+    </div>
+
+    <!-- Debug information -->
+    <div id="debugInfo" class="debug-info hidden">
+      <small id="debugText">Ready for barcode detection...</small>
+    </div>
+    
+    <!-- Success results -->
+    <div id="results" class="results hidden">
+      <div class="result-header">
+        <h3>🎉 Barcode Found!</h3>
+        <button id="copyBtn" class="btn-copy">📋 Copy</button>
+      </div>
+      <div class="result-content">
+        <div class="barcode-value" id="barcodeValue"></div>
+        <div class="barcode-format" id="barcodeFormat"></div>
+      </div>
+    </div>
+    
+    <!-- No result found -->
+    <div id="noResult" class="no-result hidden">
+      <div class="icon">🔍</div>
+      <h3>No Barcode Found</h3>
+      <p>Try selecting a different area or check if the barcode is clearly visible.</p>
+    </div>
+    
+    <!-- Error state -->
+    <div id="error" class="error hidden">
+      <div class="icon">⚠️</div>
+      <h3>Error</h3>
+      <p id="errorText"></p>
+    </div>
+
+    <!-- Library status -->
+    <div id="libraryStatus" class="library-status">
+      <small id="libraryStatusText">Checking barcode detection library...</small>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
